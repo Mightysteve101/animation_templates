@@ -1,0 +1,103 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+
+body{
+	background: black;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 40px;
+}
+
+.card{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	color: white;
+	background-color: #1c1f2b;
+	border-radius: 10px;
+	padding: 20px;
+	width: 300px;
+	position: relative;
+}
+
+@property --angle{
+	syntax: "<angle>";
+	initial-value: 0deg;
+	inherits: false;
+}
+
+@property --angle2{
+	syntax: "<angle>";
+	initial-value: 180deg;
+	inherits: false;
+}
+
+.animation_1::after, .animation_1::before{
+	--angle:0deg;
+	--angle2:180deg;
+	content: '';
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	z-index: -1;
+	border-radius: 10px;
+	padding: 5px;
+	background-image: conic-gradient(from var(--angle), transparent 70%, green);
+	animation: 3s spin1 linear infinite;
+}
+
+.animation_2::after, .animation_2::before{
+	--angle:0deg;
+	content: '';
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	z-index: -1;
+	border-radius: 10px;
+	padding: 5px;
+	background-image: conic-gradient(from var(--angle), transparent 70%, blue), conic-gradient(from var(--angle2), transparent 70%, green);
+	animation: 3s spin1 linear infinite, 
+			   3s spin2 linear infinite;
+}
+
+.animation_3::after, .animation_3::before{
+	--angle:0deg;
+	content: '';
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	z-index: -1;
+	border-radius: 10px;
+	padding: 5px;
+	background-image: conic-gradient(from var(--angle), green, red, blue, green);
+	animation: 3s spin1 linear infinite;
+}
+
+.card::before{
+	filter: blur(0.5rem);
+	opacity: 0.5rem;
+}
+
+/**You cannot animate css variable so we need to use pro**/
+@keyframes spin1{
+	from{
+		--angle: 0deg;
+	}
+	to{
+		--angle: 360deg;
+	}
+}
+
+@keyframes spin2{
+	from{
+		--angle2: 180deg;
+	}
+	to{
+		--angle2: 540deg;
+	}
+}
