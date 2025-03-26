@@ -101,3 +101,13 @@ body{
 		--angle2: 540deg;
 	}
 }
+
+
+@media only screen and (max-width: 70rem){
+	body{
+		display: flex;
+		flex-direction: column;
+		padding: 20px;
+	}
+}
+
