@@ -111,3 +111,9 @@ body{
 	}
 }
 
+@media only screen and (min-width: 70rem){
+	.card{
+		font-size: clamp(0, 0, 0);
+	}
+}
+
